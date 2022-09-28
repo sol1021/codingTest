@@ -36,5 +36,4 @@ public class BJ2480 {
 		sc.close();
 
 	}
-
 }
