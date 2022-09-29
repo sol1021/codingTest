@@ -20,5 +20,4 @@ public class BJ2525 {
 		System.out.println(hour+" "+resultMin);
 		sc.close();
 	}
-
 }
