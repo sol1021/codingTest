@@ -21,5 +21,6 @@ public class BJ1978 {
 	         if(isPrime) result++;
 	      }
 	      System.out.println(result);
+	      sc.close();
 	   }
 }

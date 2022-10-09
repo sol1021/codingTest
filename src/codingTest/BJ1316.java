@@ -29,6 +29,7 @@ public class BJ1316 {
 	      }
 	      
 	      System.out.println(cnt);
+	      sc.close();
 	   }
 
 
