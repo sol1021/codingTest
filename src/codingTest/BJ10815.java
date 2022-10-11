@@ -1,30 +1,46 @@
 package codingTest;
 
+import java.util.Arrays;
 import java.util.Scanner;
 
-public class BJ10815 {
-	public static void main(String[] args) {
-		Scanner sc = new Scanner(System.in);
-		int youNumber = sc.nextInt();
-		int[] youCard = new int[youNumber];
-		for(int i=0;i<youNumber;i++) {
-			youCard[i] = sc.nextInt();
-		}
-		int myNumber = sc.nextInt();
-		int[] myCard = new int[myNumber];
-		int[] result = new int[myNumber];
-		for(int i=0;i<myNumber;i++) {
-			myCard[i] = sc.nextInt();
-		}
-		for(int i=0;i<myNumber;i++) {
-			for(int j =0;j<youNumber;j++) {
-				if(myCard[i]==youCard[j])
-					result[i]=1;
-			}
-			if(result[i]!=1) result[i]=0;
-			System.out.print(result[i] + " ");
-		}
-		sc.close();
-	}
+class BJ10815 {
+    private static int youNumber;
+    private static int[] youCardArray;
+    private static int myNumber;
+    private static StringBuilder sb = new StringBuilder();
 
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        youNumber = sc.nextInt();
+        youCardArray= new int[youNumber];
+        for (int i = 0; i < youNumber; i++) {
+            youCardArray[i] = sc.nextInt();
+        }
+        Arrays.sort(youCardArray);
+        myNumber = sc.nextInt();
+        for (int i = 0; i < myNumber; i++) {
+            int myCard = sc.nextInt();
+            int left = 0;
+            int right = youNumber - 1;
+            while (left <= right) {
+                int mid = (left + right) / 2;
+                int youCard = youCardArray[mid];
+                if (youCard == myCard) {
+                    sb.append(1 + " ");
+                    break;
+                }
+                if (youCard > myCard) { //지금 상대방 카드보다 더 작은거 찾아야함
+                    right = mid - 1;
+                } else {
+                    left = mid + 1;
+                }
+                if (left > right) {
+                    sb.append(0 + " ");
+                    break;
+                }
+            }
+        }
+        System.out.println(sb.toString());
+        sc.close();
+    }
 }
