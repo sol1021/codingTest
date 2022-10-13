@@ -16,6 +16,7 @@ public class MergeSort {
 		for(int i =0;i<arr.length;i++) {
 			System.out.print(arr[i]);
 		}
+		sc.close();
 	}
  
 	public static void mergeSort(int[] arr) {
@@ -63,5 +64,6 @@ public class MergeSort {
 		for(int i=0; i<=mid-part1; i++) {
 			arr[index+i] = tmp[part1+i];
 		}
+		
 	}
 }
