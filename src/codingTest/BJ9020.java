@@ -1,4 +1,3 @@
-//시간초과
 package codingTest;
 
 import java.util.Scanner;
@@ -10,7 +9,7 @@ public class BJ9020 {
 		for(int i=0;i<s;i++) {
 			int n = sc.nextInt();
 			int prime1=0,prime2=0;
-			for(int j=2;j<=n-2;j++) {
+			for(int j=2;j<=n/2;j++) {
 				if(isPrime(j) && isPrime(n-j)) {
 					if(prime1 != 0) {
 						int a = Math.abs(prime1-prime2);
@@ -31,12 +30,13 @@ public class BJ9020 {
 					}
 				} 
 			}
-			System.out.println(prime2+" " +prime1);
+			System.out.println(prime1+" " +prime2);
 		}
 	}
 	public static boolean  isPrime(int n) {
 		boolean prime = true;
-		for(int i =2;i<n;i++) {
+		int sqrtNum = (int)Math.sqrt(n);
+		for(int i =2;i<=sqrtNum;i++) {
 			if(n%i==0) {
 				prime=false;
 				break;
@@ -44,5 +44,4 @@ public class BJ9020 {
 		}
 		return prime;
 	}
-	
 }
