@@ -24,5 +24,4 @@ public class BJ10814 {
 		}
 		sc.close();
 	}
-
 }
