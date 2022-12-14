@@ -7,6 +7,7 @@ import java.util.Arrays;
 import java.util.Collections;
 
 public class BJ1427 {
+	
 	public static void main(String[] args) throws IOException {
 		BufferedReader bf = new BufferedReader(new InputStreamReader(System.in));
 		StringBuilder sb = new StringBuilder();
@@ -19,5 +20,4 @@ public class BJ1427 {
 		}
 		System.out.print(sb);
 	}
-
 }
