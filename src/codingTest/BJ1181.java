@@ -29,5 +29,4 @@ public class BJ1181 {
 			else System.out.println(array[i]);
 		}
 	}
-	
 }
