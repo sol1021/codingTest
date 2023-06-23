@@ -22,5 +22,4 @@ public class BJ2164 {
 		}
 		System.out.println(que.poll());
 	}
-
 }
