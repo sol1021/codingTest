@@ -44,9 +44,7 @@ public class BJ10845 {
 				if(que.isEmpty())
 					System.out.println(-1);
 				else
-					System.out.println(n);
-				
+					System.out.println(n);			
 		}
 	}
-
 }
