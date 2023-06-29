@@ -1,38 +1,57 @@
 package codingTest;
 
-import java.util.Scanner;
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.StringTokenizer;
 
 public class BJ2606 {
-	static int a[][];
-	static boolean visited[];
-	static int count=0;
+	static ArrayList<Integer>[] list;
+	static int N,M;
+	static boolean[] visited;
+	static int result;
 	
-	static int DFS(int v) {
-		visited[v] = true;
-		for(int i=1;i<a.length;i++) {
-			if(a[v][i]==1 && visited[i]==false) {
-				count++;
-				DFS(i);
+	static void DFS(int num) {
+		visited[num] = true;
+		for(int i=0;i<list[num].size();i++) {
+			int temp = list[num].get(i);
+			if(!visited[temp]) {
+				result++;
+				visited[temp]=true;
+				DFS(temp);
 			}
 		}
-		return count;
 	}
 	
-	public static void main(String[] args) {
-		Scanner sc = new Scanner(System.in);
-		int num = sc.nextInt();
-		int inputNum = sc.nextInt();
-		a = new int[num+1][num+1];
-		visited = new boolean[num+1];
-		
-		
-		for(int i=0;i<inputNum;i++) {
-			int n = sc.nextInt();
-			int m = sc.nextInt();
-			a[n][m] = 1;
-			a[m][n] = 1;
+	public static void main(String[] args) throws IOException{
+		BufferedReader bf = new BufferedReader(new InputStreamReader(System.in));
+		N = Integer.parseInt(bf.readLine());
+		M = Integer.parseInt(bf.readLine());
+		list = new ArrayList[N+1];
+		visited = new boolean[N+1];
+		result=0;
+				
+		for(int i=1;i<=N;i++) {
+			list[i] = new ArrayList<>();
 		}
-		System.out.println(DFS(1));
+		
+		for(int i=0;i<M;i++) {
+			StringTokenizer st = new StringTokenizer(bf.readLine());
+			int n = Integer.parseInt(st.nextToken());
+			int m = Integer.parseInt(st.nextToken());
+			list[n].add(m);
+			list[m].add(n);
+		}
+		
+		for(int i=0;i<N;i++) {
+			Collections.sort(list[i+1]);
+		}
+		
+		DFS(1);
+		System.out.println(result);
+		
 	}
 
 }
