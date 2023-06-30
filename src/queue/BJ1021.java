@@ -4,6 +4,7 @@ import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.util.ArrayDeque;
+import java.util.ArrayList;
 import java.util.Deque;
 import java.util.StringTokenizer;
 
@@ -19,48 +20,33 @@ public class BJ1021 {
 		for(int i=0;i<m;i++) {
 			array[i] = Integer.parseInt(st.nextToken());
 		}
-		Deque<Integer> deq = new ArrayDeque<>();
+		ArrayList<Integer> list = new ArrayList<>();
 		for(int i=1;i<=n;i++) {
-			deq.add(i);
+			list.add(i);
 		}
-		int count=0;
-		int result=0;
-
+		int answer=0;
+		int index = 0;
 		for(int i=0;i<m;i++) {
 			int num = array[i];
-			int first = deq.peek();
-			first = Math.abs(first-num);
-			int last = deq.peekLast();
-			if(last-num <0)
-				last = n-num+last;
-			else last = last-num;
-			if(deq.peek()==num) {
-				deq.poll();
-				continue;
-			}
-			System.out.println("@@@"+first + " " + last);
-			if(first < last) {
-				while(deq.peek()!=num) {
-					int r = deq.remove();
-					deq.add(r);
-					result++;
-					System.out.println("first" + r);
+			index = list.indexOf(num);
+			if(list.size() / 2 + list.size()%2 >=index+1) {
+				while(list.get(0)!=num) {
+					int r =list.remove(0);
+					list.add(r);
+					answer++;
 				}
-				deq.poll();
+				list.remove(0);
 			}
 			else {
-				while(deq.peek()!=num) {
-					int r = deq.removeLast();
-					deq.addFirst(r);
-					result++;
-					System.out.println("last" + r);
+				while(list.get(0)!=num) {
+					int r =list.remove(list.size()-1);
+					list.add(0, r);
+					answer++;
 				}
-				deq.poll();
+				list.remove(0);
 			}
-			n--;
 		}
-		System.out.println(result);
-		System.out.println(n);
+		System.out.println(answer);
 	}
 
 }
