@@ -33,8 +33,6 @@ public class BJ9095 {
 			Permutation(arr, depth);
 			System.out.println(count);
 		}
-		
-		
 	}
 
 }
