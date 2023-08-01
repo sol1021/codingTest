@@ -1,4 +1,4 @@
-package codingTest;
+package DFS.BFS;
 
 import java.io.BufferedReader;
 import java.io.IOException;
